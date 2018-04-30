@@ -1,7 +1,7 @@
 {
-  "name": "acctwf",
+  "name": "captain-sonar",
   "version": "1.0.0",
-  "description": "Accounting Workflow 2.0 for TQL",
+  "description": "Captain Sonar",
   "main": "index.js",
   "scripts": {
     "test": "test"
@@ -15,7 +15,7 @@
     "cors": "^2.8.4",
     "express": "^4.15.4",
     "express-session": "^1.15.6",
-    "node-sspi": "^0.2.2",
+    "massive": "^4.7.2",
     "vue": "^2.4.2",
     "vue-router": "^2.7.0",
     "vuex": "^3.0.1"

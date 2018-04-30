@@ -2,17 +2,10 @@
   <nav class="nav has-shadow">
     <div class="container">
         <div>Captain Sonar</div>
-        <div>
-          <button class="dropbtn">Administration</button>
-            <div class="dropdown-content">
-              <div>
-                <router-link class="nav-item is-tab"
-                :to="{ name: 'Login', params: { id: 'Login' } }">Carrier Search</router-link>
-              </div>
-            </div>
-        </div>
         <router-link class="nav-item is-tab"
-            :to="{ name: 'Queues', params: { id: 'Queues' } }">Queues</router-link>
+            :to="{ name: 'Login', params: { id: 'Login' } }">Login</router-link>
+        <router-link class="nav-item is-tab"
+            :to="{ name: 'NotFound', params: { id: 'NotFound' } }">Home</router-link>
       <!--<router-link class="nav-item is-tab" to="/login">
         <span v-if="isAuthenticated">Logout</span><span v-else>Login</span>
       </router-link>-->

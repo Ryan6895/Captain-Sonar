@@ -1,39 +1,25 @@
 'use strict'
+const massive = require('massive')
+const connectionString = require('./config.js')
+massive(connectionString).then(massiveInstance => {
+  app.set('db', massiveInstance)
+})
 const express = require('express')
-const app = express()
+const bodyParser = require('body-parser')
+const cors = require('cors')
 const fs = require('fs')
 const path = require('path')
+
+var app = module.exports = express()
+app.use('/dist', express.static(path.resolve(__dirname, './dist')))
+app.use(bodyParser.json())
+app.use(cors())
+
+// var db = app.get('db')
 
 const indexHTML = (() => {
   return fs.readFileSync(path.resolve(__dirname, './index.html'), 'utf-8')
 })()
-
-app.use('/dist', express.static(path.resolve(__dirname, './dist')))
-
-app.use(function (req, res, next) {
-  var NodeSSPI = require('node-sspi')
-  var nodeSSPIObj = new NodeSSPI({
-    retrieveGroups: true
-  })
-  nodeSSPIObj.authenticate(req, res, function () {
-    res.finished || next()
-  })
-})
-// app.use(function (req, res, next) {
-//   var out =
-//     'Hello ' +
-//     req.connection.user +
-//     '! Your sid is ' +
-//     req.connection.userSid +
-//     ' and you belong to following groups:<br/><ul>'
-//   if (req.connection.userGroups) {
-//     for (var i in req.connection.userGroups) {
-//       out += '<li>' + req.connection.userGroups[i] + '</li><br/>\n'
-//     }
-//   }
-//   out += '</ul>'
-//   res.send(out)
-// })
 
 require('./build/dev-server')(app)
 

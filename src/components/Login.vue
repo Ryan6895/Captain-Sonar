@@ -1,5 +1,5 @@
 <template>
-<div>Daniel List is slow</div>
+<div></div>
 </template>
 <script>
 </script>
