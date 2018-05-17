@@ -1,4 +1,13 @@
 'use strict'
+const appInsights = require('applicationinsights')
+appInsights.setup("219782ba-6217-4452-a91d-5fbdc05d1ea6")
+.setAutoDependencyCorrelation(true)
+    .setAutoCollectRequests(true)
+    .setAutoCollectPerformance(true)
+    .setAutoCollectExceptions(true)
+    .setAutoCollectDependencies(true)
+    .setAutoCollectConsole(true)
+appInsights.start();
 const massive = require('massive')
 const connectionString = require('./config.js')
 massive(connectionString).then(massiveInstance => {
@@ -28,7 +37,7 @@ app.get('*', (req, res) => {
   res.end()
 })
 
-const port = process.env.PORT || 3001
+const port = process.env.PORT || 3000
 app.listen(port, () => {
   console.log(`server started at http://localhost:${port}`)
 })

@@ -4,11 +4,13 @@
   "description": "Captain Sonar",
   "main": "index.js",
   "scripts": {
-    "test": "test"
+    "test": "test",
+    "build": "node ./node_modules/webpack/bin/webpack --config ./build/webpack.base.config.js"
   },
   "author": "Ryan Clark",
   "license": "ISC",
   "dependencies": {
+    "applicationinsights": "^1.0.2",
     "axios": "^0.16.2",
     "body-parser": "^1.18.2",
     "bulma": "^0.5.1",
