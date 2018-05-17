@@ -1,6 +1,7 @@
 'use strict'
 const appInsights = require('applicationinsights')
-appInsights.setup("219782ba-6217-4452-a91d-5fbdc05d1ea6")
+const config = require('./config.js')
+appInsights.setup(config.instrumentKey)
 .setAutoDependencyCorrelation(true)
     .setAutoCollectRequests(true)
     .setAutoCollectPerformance(true)
@@ -8,9 +9,9 @@ appInsights.setup("219782ba-6217-4452-a91d-5fbdc05d1ea6")
     .setAutoCollectDependencies(true)
     .setAutoCollectConsole(true)
 appInsights.start();
+
 const massive = require('massive')
-const connectionString = require('./config.js')
-massive(connectionString).then(massiveInstance => {
+massive(config.connectionString).then(massiveInstance => {
   app.set('db', massiveInstance)
 })
 const express = require('express')
